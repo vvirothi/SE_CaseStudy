@@ -90,4 +90,5 @@ function goToHomepage() {
     document.getElementById('signin-form').classList.add('hidden');
     document.getElementById('user-page').classList.add('hidden');
     document.getElementById('homepage').classList.remove('hidden');
+    currentUser = null; // Optional: log the user out
 }

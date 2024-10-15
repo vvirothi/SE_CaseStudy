@@ -1,0 +1,57 @@
+Password Manager
+
+Create a simple Password Manager web based application catering the following needs.
+Make sure the tailored content is executable in Replit IED in HTML CSS JS.
+
+Presentation:
+When the user loads the web application(homepage) the user is given following choices.
+1. Sign_up option
+2. Sign_in option
+
+Styling:
+Make sure to style the web application in all grey theme pallet.
+The Sign in and Sign up option boxes should be in white and outlined in black.
+
+Components:
+1. Sing up Component:
+When the user choose to Sign up he is given two input fields.
+1st field for New_User_Name.
+2nd field for corresponding New_User_Password.
+After completion of filling credentials display output and redirect user to homepage.
+
+2. Sign in Component:
+When the user choose to Sign in he is given two input fields.
+1st field for User_Name.
+2nd field for corresponding User_Password.
+After verification of credentials redirect user to his user page.
+When the user page is loaded he could choose from the following.
+a. New_Password
+b. Find_Password
+c. Edit_Password
+d. Delete_Password
+
+When the user selects New_Password he is given two input fields.
+1st field for New_Input_Name.
+2nd field for corresponding New_Input_Password.
+If the New_Input_Name corresponding the New_Input_Password exists display output.
+Else save the New_Input_Name_Password display output and redirect user to user page.
+
+when the user selects Find_Password he is given two options.
+First option to print all the saved passwords or Second option to find a specific password.
+If first option is selected display all the saved names and their corresponding password.
+If second option is selected the user has to provide a name to get its corresponding password.
+
+When the user selects Edit_Password the user has to provide a name to edit password.
+If the name exists provide input field to update password.
+Else display output and redirect user to user page.
+
+When user selects Delete_Password the user has to provide a name to delete password.
+If the name exists delete the existing name and corresponding password.
+Else display output and redirect user to user page.
+
+
+Now that the basics of the website is completed we have to tweak more.
+Add a homepage title.
+Add a user page title.
+Add an option to get redirected to homepage.
+

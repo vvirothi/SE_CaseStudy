@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main-content">
+        <div id="homepage">
+            <button onclick="showSignUp()">Sign Up</button>
+            <button onclick="showSignIn()">Sign In</button>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="hidden">
+            <input type="text" id="new-username" placeholder="New User Name">
+            <input type="password" id="new-password" placeholder="New User Password">
+            <button onclick="signUp()">Sign Up</button>
+        </div>
+
+        <!-- Sign In Form -->
+        <div id="signin-form" class="hidden">
+            <input type="text" id="username" placeholder="User Name">
+            <input type="password" id="password" placeholder="User Password">
+            <button onclick="signIn()">Sign In</button>
+        </div>
+
+        <!-- User Dashboard -->
+        <div id="user-page" class="hidden">
+            <button onclick="showNewPassword()">New Password</button>
+            <button onclick="showFindPassword()">Find Password</button>
+            <button onclick="showEditPassword()">Edit Password</button>
+            <button onclick="showDeletePassword()">Delete Password</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

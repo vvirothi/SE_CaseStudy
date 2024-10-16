@@ -8,12 +8,11 @@
 </head>
 <body>
     <div id="main-content">
-        
         <!-- Homepage with Title and Options -->
         <div id="homepage">
-            <h1>Password Manager</h1> <!-- Homepage Title -->
-            <button onclick="showSignUp()">Sign Up</button>
-            <button onclick="showSignIn()">Sign In</button>
+            <h1>Password Manager</h1>
+            <button id="show-signup-btn">Sign Up</button>
+            <button id="show-signin-btn">Sign In</button>
         </div>
 
         <!-- Sign Up Form -->
@@ -21,8 +20,8 @@
             <h2>Sign Up</h2>
             <input type="text" id="new-username" placeholder="New User Name">
             <input type="password" id="new-password" placeholder="New User Password">
-            <button onclick="signUp()">Sign Up</button>
-            <button onclick="goToHomepage()">Back to Homepage</button>
+            <button id="signup-btn">Sign Up</button>
+            <button class="go-home-btn">Homepage</button>
         </div>
 
         <!-- Sign In Form -->
@@ -30,18 +29,58 @@
             <h2>Sign In</h2>
             <input type="text" id="username" placeholder="User Name">
             <input type="password" id="password" placeholder="User Password">
-            <button onclick="signIn()">Sign In</button>
-            <button onclick="goToHomepage()">Back to Homepage</button>
+            <button id="signin-btn">Sign In</button>
+            <button class="go-home-btn">Homepage</button>
         </div>
 
-        <!-- User Dashboard with Title -->
+        <!-- User Dashboard -->
         <div id="user-page" class="hidden">
-            <h2>Welcome to Your Password Manager</h2> <!-- User Page Title -->
-            <button onclick="showNewPassword()">New Password</button>
-            <button onclick="showFindPassword()">Find Password</button>
-            <button onclick="showEditPassword()">Edit Password</button>
-            <button onclick="showDeletePassword()">Delete Password</button>
-            <button onclick="goToHomepage()">Log Out / Back to Homepage</button>
+            <h2>Welcome to Your Password Manager</h2>
+            <button id="show-new-password-btn">New Password</button>
+            <button id="show-find-password-btn">Find Password</button>
+            <button id="show-edit-password-btn">Edit Password</button>
+            <button id="show-delete-password-btn">Delete Password</button>
+            <button class="go-home-btn">Log Out</button>
+        </div>
+
+        <!-- New Password Section -->
+        <div id="new-password-section" class="hidden">
+            <h3>New Password</h3>
+            <input type="text" id="password-name" placeholder="Enter name for new password">
+            <input type="text" id="password-value" placeholder="Enter the password">
+            <button id="save-new-password-btn">Save Password</button>
+            <button class="go-user-page-btn">Back</button>
+        </div>
+
+        <!-- Find Password Section -->
+        <div id="find-password-section" class="hidden">
+            <h3>Find Password</h3>
+            <input type="text" id="find-password-name" placeholder="Enter name to find password">
+            <button id="find-password-btn">Find Password</button>
+            <button id="show-all-passwords-btn">Show All Passwords</button>
+            <button class="go-user-page-btn">Back</button>
+        </div>
+
+        <!-- Edit Password Section -->
+        <div id="edit-password-section" class="hidden">
+            <h3>Edit Password</h3>
+            <input type="text" id="edit-password-name" placeholder="Enter name to edit password">
+            <input type="text" id="edit-password-value" placeholder="Enter new password">
+            <button id="edit-password-btn">Update Password</button>
+            <button class="go-user-page-btn">Back</button>
+        </div>
+
+        <!-- Delete Password Section -->
+        <div id="delete-password-section" class="hidden">
+            <h3>Delete Password</h3>
+            <input type="text" id="delete-password-name" placeholder="Enter name to delete password">
+            <button id="delete-password-btn">Delete Password</button>
+            <button class="go-user-page-btn">Back</button>
+        </div>
+
+        <!-- Output Display Box -->
+        <div id="output-box">
+            <p id="output-message"></p>
         </div>
     </div>
     <script src="script.js"></script>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main-content">
+        <!-- Homepage with Title and Options -->
+        <div id="homepage">
+            <h1>Password Manager</h1>
+            <button id="show-signup-btn">Sign Up</button>
+            <button id="show-signin-btn">Sign In</button>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div id="signup-form" class="hidden">
+            <h2>Sign Up</h2>
+            <input type="text" id="new-username" placeholder="New User Name">
+            <input type="password" id="new-password" placeholder="New User Password">
+            <button id="signup-btn">Sign Up</button>
+            <button class="go-home-btn">Homepage</button>
+        </div>
+
+        <!-- Sign In Form -->
+        <div id="signin-form" class="hidden">
+            <h2>Sign In</h2>
+            <input type="text" id="username" placeholder="User Name">
+            <input type="password" id="password" placeholder="User Password">
+            <button id="signin-btn">Sign In</button>
+            <button class="go-home-btn">Homepage</button>
+        </div>
+
+        <!-- User Dashboard -->
+        <div id="user-page" class="hidden">
+            <h2>Welcome</h2> <!-- This will be dynamically updated -->
+            <button id="show-new-password-btn">Insert Password</button>
+            <button id="show-find-password-btn">Select Password</button>
+            <button id="show-edit-password-btn">Update Password</button>
+            <button id="show-delete-password-btn">Delete Password</button>
+            <button class="go-home-btn">Log Out</button>
+        </div>
+
+        <!-- Insert Password Section -->
+        <div id="insert-password-section" class="hidden">
+            <h3>Insert Password</h3>
+            <input type="text" id="password-name" placeholder="Enter name for new password">
+            <input type="text" id="password-value" placeholder="Enter the password">
+            <button id="save-new-password-btn">Save Password</button>
+            <button class="go-user-page-btn">Back</button>
+        </div>
+
+        <!-- Select Password Section -->
+        <div id="select-password-section" class="hidden">
+            <h3>Select Password</h3>
+            <input type="text" id="find-password-name" placeholder="Enter name to find password">
+            <button id="find-password-btn">Find Password</button>
+            <button id="show-all-passwords-btn">Show All Passwords</button>
+            <button class="go-user-page-btn">Back</button>
+        </div>
+
+        <!-- Update Password Section -->
+        <div id="update-password-section" class="hidden">
+            <h3>Update Password</h3>
+            <input type="text" id="edit-password-name" placeholder="Enter name to update password">
+            <input type="text" id="edit-password-value" placeholder="Enter new password">
+            <button id="edit-password-btn">Update Password</button>
+            <button class="go-user-page-btn">Back</button>
+        </div>
+
+        <!-- Delete Password Section -->
+        <div id="delete-password-section" class="hidden">
+            <h3>Delete Password</h3>
+            <input type="text" id="delete-password-name" placeholder="Enter name to delete password">
+            <button id="delete-password-btn">Delete Password</button>
+            <button id="delete-all-passwords-btn">Delete All Passwords</button>
+            <button class="go-user-page-btn">Back</button>
+        </div>
+
+        <!-- Output Display Box -->
+        <div id="output-box" class="hidden">
+            <p id="output-message"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

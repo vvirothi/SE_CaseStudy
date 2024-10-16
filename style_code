@@ -1,36 +1,45 @@
 body {
-    background-color: #b0b0b0;
-    color: #333;
-    font-family: Arial, sans-serif;
+  background-color: #b0b0b0;
+  color: #333;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
 }
 
 #main-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px; /* Slightly wider container for comfortable centering */
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 button, input[type="text"], input[type="password"] {
-    background-color: #ffffff;
-    color: #333;
-    border: 1px solid #000;
-    margin: 5px;
-    padding: 10px;
+  background-color: #ffffff;
+  color: #333;
+  border: 1px solid #000;
+  margin: 10px 0; /* Adds vertical margin and centers horizontally */
+  padding: 10px;
+  width: 100%; /* Fill container width uniformly */
+  max-width: 260px; /* Set a consistent max width */
+  text-align: center;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-h1 {
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 1.5em;
-    color: #333;
-    margin-bottom: 15px;
+h1, h2 {
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }

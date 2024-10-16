@@ -1,0 +1,200 @@
+const users = {
+    "devs": { password: "2004", passwords: {} }
+}; // Default user for testing
+let currentUser = null;
+
+function showElement(id) {
+    document.getElementById(id).classList.remove('hidden');
+}
+
+function hideElement(id) {
+    document.getElementById(id).classList.add('hidden');
+}
+
+function clearInputFields(...ids) {
+    ids.forEach(id => document.getElementById(id).value = '');
+}
+
+function displayOutput(message) {
+    const outputBox = document.getElementById('output-box');
+    if (message) {
+        outputBox.innerHTML = message;
+        outputBox.classList.remove('hidden');
+    } else {
+        outputBox.classList.add('hidden');
+    }
+}
+
+// Sign Up, Sign In, and User Page
+function showSignUp() {
+    hideElement('homepage');
+    showElement('signup-form');
+}
+
+function showSignIn() {
+    hideElement('homepage');
+    showElement('signin-form');
+}
+
+function signUp() {
+    const username = document.getElementById('new-username').value.trim();
+    const password = document.getElementById('new-password').value;
+    if (username && password) {
+        if (users[username]) {
+            displayOutput("Username already exists. Please choose a different one.");
+        } else {
+            users[username] = { password, passwords: {} };
+            displayOutput(`Sign-up successful for ${username}!`);
+            goToHomepage();
+        }
+    } else {
+        displayOutput("Please enter both username and password.");
+    }
+}
+
+function signIn() {
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+    if (users[username] && users[username].password === password) {
+        currentUser = username;
+        displayOutput(`Welcome, ${username}!`);
+        showUserPage();
+    } else {
+        displayOutput("Invalid credentials!");
+    }
+}
+
+function showUserPage() {
+    hideElement('signin-form');
+    document.querySelector('#user-page h2').textContent = `Welcome, ${currentUser}!`;
+    showElement('user-page');
+    displayOutput(""); // Clear output when user logs in
+}
+
+function goToUserPage() {
+    ['insert-password-section', 'select-password-section', 'update-password-section', 'delete-password-section'].forEach(hideElement);
+    showElement('user-page');
+    displayOutput(""); // Clear and hide output box
+}
+
+function goToHomepage() {
+    ['signup-form', 'signin-form', 'user-page'].forEach(hideElement);
+    showElement('homepage');
+    currentUser = null; // Log out user
+    displayOutput(""); // Clear output box
+}
+
+// Password Operations
+function saveNewPassword() {
+    const name = document.getElementById('password-name').value.trim();
+    const password = document.getElementById('password-value').value;
+    if (name && password) {
+        users[currentUser].passwords[name] = password;
+        displayOutput(`Password inserted for ${name}!`);
+        clearInputFields('password-name', 'password-value');
+        goToUserPage();
+    } else {
+        displayOutput("Please enter both name and password.");
+    }
+}
+
+function findPassword() {
+    const name = document.getElementById('find-password-name').value.trim();
+    const password = users[currentUser].passwords[name];
+    if (password) {
+        displayOutput(`Password for <strong>${name}</strong> is ${password}`);
+    } else {
+        displayOutput("Name not found.");
+    }
+}
+
+function showAllPasswords() {
+    const passwords = users[currentUser].passwords;
+    if (Object.keys(passwords).length === 0) {
+        displayOutput("No passwords saved.");
+    } else {
+        displayOutput(Object.keys(passwords).map(key => `${key}: ${passwords[key]}`).join('<br>'));
+    }
+}
+
+function editPassword() {
+    const name = document.getElementById('edit-password-name').value.trim();
+    const newPassword = document.getElementById('edit-password-value').value;
+    if (users[currentUser].passwords[name]) {
+        users[currentUser].passwords[name] = newPassword;
+        displayOutput(`Password updated for ${name}!`);
+        clearInputFields('edit-password-name', 'edit-password-value');
+        goToUserPage();
+    } else {
+        displayOutput("Name not found.");
+    }
+}
+
+function deletePassword() {
+    const name = document.getElementById('delete-password-name').value.trim();
+    if (users[currentUser].passwords[name]) {
+        delete users[currentUser].passwords[name];
+        displayOutput(`Password for ${name} deleted.`);
+        clearInputFields('delete-password-name');
+        goToUserPage();
+    } else {
+        displayOutput("Name not found.");
+    }
+}
+
+function deleteAllPasswords() {
+    if (Object.keys(users[currentUser].passwords).length === 0) {
+        displayOutput("No passwords to delete.");
+    } else {
+        users[currentUser].passwords = {};
+        displayOutput("All passwords have been deleted.");
+    }
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', function () {
+    // Home buttons
+    document.getElementById('show-signup-btn').addEventListener('click', showSignUp);
+    document.getElementById('show-signin-btn').addEventListener('click', showSignIn);
+
+    // Sign Up & Sign In
+    document.getElementById('signup-btn').addEventListener('click', signUp);
+    document.getElementById('signin-btn').addEventListener('click', signIn);
+
+    // Navigation to password functions from user page
+    document.getElementById('show-new-password-btn').addEventListener('click', function() {
+        hideElement('user-page');
+        showElement('insert-password-section');
+        displayOutput(""); // Clear any previous output
+    });
+
+    document.getElementById('show-find-password-btn').addEventListener('click', function() {
+        hideElement('user-page');
+        showElement('select-password-section');
+        displayOutput(""); // Clear any previous output
+    });
+
+    document.getElementById('show-edit-password-btn').addEventListener('click', function() {
+        hideElement('user-page');
+        showElement('update-password-section');
+        displayOutput(""); // Clear any previous output
+    });
+
+    document.getElementById('show-delete-password-btn').addEventListener('click', function() {
+        hideElement('user-page');
+        showElement('delete-password-section');
+        displayOutput(""); // Clear any previous output
+    });
+
+    // Password functions
+    document.getElementById('save-new-password-btn').addEventListener('click', saveNewPassword);
+    document.getElementById('find-password-btn').addEventListener('click', findPassword);
+    document.getElementById('show-all-passwords-btn').addEventListener('click', showAllPasswords);
+    document.getElementById('edit-password-btn').addEventListener('click', editPassword);
+    document.getElementById('delete-password-btn').addEventListener('click', deletePassword);
+    document.getElementById('delete-all-passwords-btn').addEventListener('click', deleteAllPasswords);
+
+    // Navigation buttons
+    document.querySelectorAll('.go-home-btn').forEach(btn => btn.addEventListener('click', goToHomepage));
+    document.querySelectorAll('.go-user-page-btn').forEach(btn => btn.addEventListener('click', goToUserPage));
+});

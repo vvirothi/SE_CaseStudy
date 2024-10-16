@@ -48,10 +48,3 @@ Else display output and redirect user to user page.
 When user selects Delete_Password the user has to provide a name to delete password.
 If the name exists delete the existing name and corresponding password.
 Else display output and redirect user to user page.
-
-
-Now that the basics of the website is completed we have to tweak more.
-Add a homepage title.
-Add a user page title.
-Add an option to get redirected to homepage.
-
